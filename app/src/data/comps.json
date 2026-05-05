@@ -1,0 +1,331 @@
+[
+  {
+    "id": "tf-reroll",
+    "name": "Twisted Fate リロール",
+    "tier": "S",
+    "style": "reroll",
+    "units": [
+      { "name": "Twisted Fate", "cost": 1, "count": 3, "isCarry": true },
+      { "name": "Caitlyn", "cost": 1, "count": 2 },
+      { "name": "Lissandra", "cost": 1, "count": 2 },
+      { "name": "Cho'Gath", "cost": 1, "count": 2 },
+      { "name": "Karma", "cost": 4, "count": 1 },
+      { "name": "Xayah", "cost": 3, "count": 1 },
+      { "name": "Jhin", "cost": 5, "count": 1 },
+      { "name": "Ezreal", "cost": 2, "count": 1 }
+    ],
+    "keyEarlyUnits": ["Twisted Fate", "Caitlyn", "Lissandra"],
+    "items": [
+      { "name": "Rapid Firecannon", "type": "completed", "target": "Twisted Fate" },
+      { "name": "Guinsoo's Rageblade", "type": "completed", "target": "Twisted Fate" },
+      { "name": "Hextech Gunblade", "type": "completed", "target": "Twisted Fate" }
+    ],
+    "augments": [
+      { "name": "Fateweaver Crest", "priority": "HIGH" },
+      { "name": "Fateweaver Crown", "priority": "HIGH" },
+      { "name": "Reroll augments", "priority": "HIGH" },
+      { "name": "Level Up!", "priority": "MEDIUM" },
+      { "name": "Tiny Titans", "priority": "MEDIUM" }
+    ],
+    "traits": [
+      { "name": "Fateweaver", "count": 3 },
+      { "name": "Dark Star", "count": 2 }
+    ],
+    "notes": "レベル4〜5でTF・カイトリン・リサンドラを引きにいく。TFが3枚揃えば序盤から強い。Fateweaverシナジーでゴールドを安定させながらリロール。"
+  },
+  {
+    "id": "dark-star-kaisa",
+    "name": "ダークスター カイ＝サ",
+    "tier": "S",
+    "style": "carry",
+    "units": [
+      { "name": "Kai'Sa", "cost": 3, "count": 2, "isCarry": true },
+      { "name": "Cho'Gath", "cost": 1, "count": 2 },
+      { "name": "Lissandra", "cost": 1, "count": 2 },
+      { "name": "Mordekaiser", "cost": 2, "count": 2 },
+      { "name": "Karma", "cost": 4, "count": 1 },
+      { "name": "Jhin", "cost": 5, "count": 1 },
+      { "name": "Xayah", "cost": 3, "count": 1 },
+      { "name": "Bel'Veth", "cost": 4, "count": 1 }
+    ],
+    "keyEarlyUnits": ["Kai'Sa", "Cho'Gath", "Lissandra", "Mordekaiser"],
+    "items": [
+      { "name": "Rabadon's Deathcap", "type": "completed", "target": "Kai'Sa" },
+      { "name": "Shadowflame", "type": "completed", "target": "Kai'Sa" },
+      { "name": "Archangel's Staff", "type": "completed", "target": "Kai'Sa" }
+    ],
+    "augments": [
+      { "name": "Dark Star Crest", "priority": "HIGH" },
+      { "name": "Dark Star Crown", "priority": "HIGH" },
+      { "name": "Void Striker", "priority": "HIGH" },
+      { "name": "Jeweled Lotus", "priority": "MEDIUM" },
+      { "name": "Spear of Shojin", "priority": "MEDIUM" }
+    ],
+    "traits": [
+      { "name": "Dark Star", "count": 4 },
+      { "name": "Void", "count": 2 }
+    ],
+    "notes": "カイ＝サが引ければ序盤からダークスターを狙う。チョ＝ガスとリサンドラで序盤のシナジーを確保。カイ＝サ2枚でキャリーとして確定させる。"
+  },
+  {
+    "id": "dark-star-jhin",
+    "name": "ダークスター ジン",
+    "tier": "S",
+    "style": "carry",
+    "units": [
+      { "name": "Jhin", "cost": 5, "count": 1, "isCarry": true },
+      { "name": "Karma", "cost": 4, "count": 2 },
+      { "name": "Cho'Gath", "cost": 1, "count": 2 },
+      { "name": "Lissandra", "cost": 1, "count": 2 },
+      { "name": "Mordekaiser", "cost": 2, "count": 2 },
+      { "name": "Kai'Sa", "cost": 3, "count": 1 },
+      { "name": "Xayah", "cost": 3, "count": 1 },
+      { "name": "Bel'Veth", "cost": 4, "count": 1 }
+    ],
+    "keyEarlyUnits": ["Cho'Gath", "Lissandra", "Mordekaiser", "Karma"],
+    "items": [
+      { "name": "Guinsoo's Rageblade", "type": "completed", "target": "Jhin" },
+      { "name": "Rapid Firecannon", "type": "completed", "target": "Jhin" },
+      { "name": "Last Whisper", "type": "completed", "target": "Jhin" }
+    ],
+    "augments": [
+      { "name": "Dark Star Crest", "priority": "HIGH" },
+      { "name": "Dark Star Crown", "priority": "HIGH" },
+      { "name": "Cybernetic Bulk", "priority": "MEDIUM" },
+      { "name": "Jeweled Lotus", "priority": "MEDIUM" }
+    ],
+    "traits": [
+      { "name": "Dark Star", "count": 6 },
+      { "name": "Fated", "count": 3 }
+    ],
+    "notes": "レベル8〜9でジンを探しながら、序盤はダークスターユニットで盤面を安定させる。カルマ2枚がキーとなる中盤の中継ぎ構成。"
+  },
+  {
+    "id": "primordian",
+    "name": "プライモーディアン",
+    "tier": "S",
+    "style": "carry",
+    "units": [
+      { "name": "Ezreal", "cost": 2, "count": 2, "isCarry": true },
+      { "name": "Cho'Gath", "cost": 1, "count": 2 },
+      { "name": "Lissandra", "cost": 1, "count": 2 },
+      { "name": "Renekton", "cost": 2, "count": 2 },
+      { "name": "Neeko", "cost": 3, "count": 1 },
+      { "name": "Karma", "cost": 4, "count": 1 },
+      { "name": "Xayah", "cost": 3, "count": 1 },
+      { "name": "Cassiopeia", "cost": 4, "count": 1 }
+    ],
+    "keyEarlyUnits": ["Ezreal", "Cho'Gath", "Renekton"],
+    "items": [
+      { "name": "Rabadon's Deathcap", "type": "completed", "target": "Ezreal" },
+      { "name": "Jeweled Gauntlet", "type": "completed", "target": "Ezreal" },
+      { "name": "Archangel's Staff", "type": "completed", "target": "Ezreal" }
+    ],
+    "augments": [
+      { "name": "Primordian Crest", "priority": "HIGH" },
+      { "name": "Primordian Crown", "priority": "HIGH" },
+      { "name": "Tons of Stats!", "priority": "MEDIUM" },
+      { "name": "Cybernetic Bulk", "priority": "MEDIUM" }
+    ],
+    "traits": [
+      { "name": "Primordian", "count": 4 },
+      { "name": "Arcana", "count": 2 }
+    ],
+    "notes": "エズリアルとチョ＝ガスを早めに引いてプライモーディアンシナジーを確保。序盤は安定してダメージを稼ぎながら中盤で盤面を完成させる。"
+  },
+  {
+    "id": "belveth-reroll",
+    "name": "ベルヴェス リロール",
+    "tier": "S",
+    "style": "reroll",
+    "units": [
+      { "name": "Bel'Veth", "cost": 4, "count": 2, "isCarry": true },
+      { "name": "Cho'Gath", "cost": 1, "count": 2 },
+      { "name": "Lissandra", "cost": 1, "count": 2 },
+      { "name": "Mordekaiser", "cost": 2, "count": 2 },
+      { "name": "Kai'Sa", "cost": 3, "count": 2 },
+      { "name": "Xayah", "cost": 3, "count": 1 },
+      { "name": "Karma", "cost": 4, "count": 1 }
+    ],
+    "keyEarlyUnits": ["Cho'Gath", "Mordekaiser", "Kai'Sa"],
+    "items": [
+      { "name": "Titan's Resolve", "type": "completed", "target": "Bel'Veth" },
+      { "name": "Guinsoo's Rageblade", "type": "completed", "target": "Bel'Veth" },
+      { "name": "Bloodthirster", "type": "completed", "target": "Bel'Veth" }
+    ],
+    "augments": [
+      { "name": "Void Striker", "priority": "HIGH" },
+      { "name": "Dark Star Crest", "priority": "HIGH" },
+      { "name": "Battlemage", "priority": "MEDIUM" },
+      { "name": "Cybernetic Bulk", "priority": "MEDIUM" }
+    ],
+    "traits": [
+      { "name": "Void", "count": 4 },
+      { "name": "Dark Star", "count": 3 }
+    ],
+    "notes": "レベル7〜8でベルヴェスを探しに行く。序盤はダークスターとヴォイドユニットで盤面を作り、中盤でベルヴェスに切り替える。"
+  },
+  {
+    "id": "karma-jhin",
+    "name": "カルマ / ジン",
+    "tier": "S",
+    "style": "carry",
+    "units": [
+      { "name": "Karma", "cost": 4, "count": 2, "isCarry": true },
+      { "name": "Jhin", "cost": 5, "count": 1, "isCarry": true },
+      { "name": "Cho'Gath", "cost": 1, "count": 2 },
+      { "name": "Lissandra", "cost": 1, "count": 2 },
+      { "name": "Twisted Fate", "cost": 1, "count": 2 },
+      { "name": "Caitlyn", "cost": 1, "count": 2 },
+      { "name": "Ezreal", "cost": 2, "count": 1 },
+      { "name": "Xayah", "cost": 3, "count": 1 }
+    ],
+    "keyEarlyUnits": ["Karma", "Twisted Fate", "Caitlyn"],
+    "items": [
+      { "name": "Spear of Shojin", "type": "completed", "target": "Karma" },
+      { "name": "Rabadon's Deathcap", "type": "completed", "target": "Karma" },
+      { "name": "Archangel's Staff", "type": "completed", "target": "Karma" }
+    ],
+    "augments": [
+      { "name": "Fated Crest", "priority": "HIGH" },
+      { "name": "Fateweaver Crown", "priority": "HIGH" },
+      { "name": "Jeweled Lotus", "priority": "MEDIUM" },
+      { "name": "Spear of Shojin", "priority": "MEDIUM" }
+    ],
+    "traits": [
+      { "name": "Fated", "count": 3 },
+      { "name": "Fateweaver", "count": 3 }
+    ],
+    "notes": "カルマが2枚引ければ強力なスペルダメージを出せる。ジンはレベル9で追加するフィニッシャー。カルマのアイテムを早めに揃えることが重要。"
+  },
+  {
+    "id": "fiora-sona",
+    "name": "フィオラ / ソナ",
+    "tier": "S",
+    "style": "reroll",
+    "units": [
+      { "name": "Fiora", "cost": 1, "count": 3, "isCarry": true },
+      { "name": "Sona", "cost": 1, "count": 3 },
+      { "name": "Cho'Gath", "cost": 1, "count": 2 },
+      { "name": "Lissandra", "cost": 1, "count": 2 },
+      { "name": "Twisted Fate", "cost": 1, "count": 2 },
+      { "name": "Mordekaiser", "cost": 2, "count": 1 },
+      { "name": "Karma", "cost": 4, "count": 1 }
+    ],
+    "keyEarlyUnits": ["Fiora", "Sona", "Cho'Gath"],
+    "items": [
+      { "name": "Titan's Resolve", "type": "completed", "target": "Fiora" },
+      { "name": "Bloodthirster", "type": "completed", "target": "Fiora" },
+      { "name": "Bramble Vest", "type": "completed", "target": "Fiora" }
+    ],
+    "augments": [
+      { "name": "Bronze For Life", "priority": "HIGH" },
+      { "name": "Reroll augments", "priority": "HIGH" },
+      { "name": "Tiny Titans", "priority": "MEDIUM" },
+      { "name": "Level Up!", "priority": "MEDIUM" }
+    ],
+    "traits": [
+      { "name": "Duelist", "count": 4 },
+      { "name": "Harmonics", "count": 3 }
+    ],
+    "notes": "フィオラとソナを序盤から集めてリロール。Bronze For Lifeオーグメントが取れたら確定で狙いにいく。フィオラが3枚揃えば非常に強力。"
+  },
+  {
+    "id": "xayah-jhin",
+    "name": "ザヤ / ジン",
+    "tier": "S",
+    "style": "carry",
+    "units": [
+      { "name": "Xayah", "cost": 3, "count": 2, "isCarry": true },
+      { "name": "Jhin", "cost": 5, "count": 1, "isCarry": true },
+      { "name": "Cho'Gath", "cost": 1, "count": 2 },
+      { "name": "Lissandra", "cost": 1, "count": 2 },
+      { "name": "Mordekaiser", "cost": 2, "count": 1 },
+      { "name": "Kai'Sa", "cost": 3, "count": 1 },
+      { "name": "Karma", "cost": 4, "count": 1 },
+      { "name": "Bel'Veth", "cost": 4, "count": 1 }
+    ],
+    "keyEarlyUnits": ["Xayah", "Cho'Gath", "Lissandra"],
+    "items": [
+      { "name": "Infinity Edge", "type": "completed", "target": "Xayah" },
+      { "name": "Last Whisper", "type": "completed", "target": "Xayah" },
+      { "name": "Rapid Firecannon", "type": "completed", "target": "Xayah" }
+    ],
+    "augments": [
+      { "name": "Stargazer Crest", "priority": "HIGH" },
+      { "name": "Void Striker", "priority": "HIGH" },
+      { "name": "Dark Star Crest", "priority": "MEDIUM" },
+      { "name": "Cybernetic Bulk", "priority": "MEDIUM" }
+    ],
+    "traits": [
+      { "name": "Stargazer", "count": 3 },
+      { "name": "Dark Star", "count": 3 }
+    ],
+    "notes": "ザヤが引ければスターゲイザーとダークスターを組み合わせた強力な射手構成。レベル8でジンを追加して爆発力を上げる。"
+  },
+  {
+    "id": "ezreal-chogath",
+    "name": "エズリアル / チョ＝ガス",
+    "tier": "S",
+    "style": "carry",
+    "units": [
+      { "name": "Ezreal", "cost": 2, "count": 3, "isCarry": true },
+      { "name": "Cho'Gath", "cost": 1, "count": 2 },
+      { "name": "Lissandra", "cost": 1, "count": 2 },
+      { "name": "Mordekaiser", "cost": 2, "count": 2 },
+      { "name": "Renekton", "cost": 2, "count": 2 },
+      { "name": "Neeko", "cost": 3, "count": 1 },
+      { "name": "Cassiopeia", "cost": 4, "count": 1 }
+    ],
+    "keyEarlyUnits": ["Ezreal", "Cho'Gath", "Renekton"],
+    "items": [
+      { "name": "Rabadon's Deathcap", "type": "completed", "target": "Ezreal" },
+      { "name": "Jeweled Gauntlet", "type": "completed", "target": "Ezreal" },
+      { "name": "Blue Buff", "type": "completed", "target": "Ezreal" }
+    ],
+    "augments": [
+      { "name": "Primordian Crest", "priority": "HIGH" },
+      { "name": "Dark Star Crest", "priority": "HIGH" },
+      { "name": "Cybernetic Bulk", "priority": "MEDIUM" },
+      { "name": "Tons of Stats!", "priority": "MEDIUM" }
+    ],
+    "traits": [
+      { "name": "Primordian", "count": 4 },
+      { "name": "Dark Star", "count": 3 }
+    ],
+    "notes": "エズリアル3枚を目指すリロール寄りの構成。チョ＝ガスとレネクトンで前衛を固めながら、エズリアルのスペルダメージで勝つ。"
+  },
+  {
+    "id": "stargazer-tf",
+    "name": "スターゲイザー TF",
+    "tier": "S",
+    "style": "fast9",
+    "units": [
+      { "name": "Twisted Fate", "cost": 1, "count": 2, "isCarry": true },
+      { "name": "Jhin", "cost": 5, "count": 1, "isCarry": true },
+      { "name": "Karma", "cost": 4, "count": 2 },
+      { "name": "Cho'Gath", "cost": 1, "count": 2 },
+      { "name": "Xayah", "cost": 3, "count": 2 },
+      { "name": "Kai'Sa", "cost": 3, "count": 1 },
+      { "name": "Bel'Veth", "cost": 4, "count": 1 },
+      { "name": "Cassiopeia", "cost": 4, "count": 1 }
+    ],
+    "keyEarlyUnits": ["Twisted Fate", "Xayah", "Karma"],
+    "items": [
+      { "name": "Spear of Shojin", "type": "completed", "target": "Twisted Fate" },
+      { "name": "Rabadon's Deathcap", "type": "completed", "target": "Jhin" },
+      { "name": "Guinsoo's Rageblade", "type": "completed", "target": "Jhin" }
+    ],
+    "augments": [
+      { "name": "Stargazer Crown", "priority": "HIGH" },
+      { "name": "Fateweaver Crest", "priority": "HIGH" },
+      { "name": "Cybernetic Bulk", "priority": "MEDIUM" },
+      { "name": "Spear of Shojin", "priority": "MEDIUM" }
+    ],
+    "traits": [
+      { "name": "Stargazer", "count": 4 },
+      { "name": "Fateweaver", "count": 2 }
+    ],
+    "notes": "Fast 9でジンを目指す高コスト構成。レベル9まではスターゲイザーとFateweaverで耐えて、ジン入場後に一気に強くなる。序盤の節約が重要。"
+  }
+]
