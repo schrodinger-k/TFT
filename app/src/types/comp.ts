@@ -3,11 +3,10 @@ export type AugmentPriority = 'HIGH' | 'MEDIUM' | 'LOW';
 
 export interface Unit {
   name: string;
-  cost: 1 | 2 | 3 | 4 | 5;
+  cost: 1|2|3|4|5;
   count: number;
   isCarry?: boolean;
 }
-
 export interface AugmentEntry { name: string; priority: AugmentPriority }
 export interface ItemEntry    { name: string; type: 'component'|'completed'; target: string }
 
@@ -45,17 +44,22 @@ export interface CompScore {
 
 export interface Champion {
   name: string;
+  nameJa: string;
   cost: 1|2|3|4|5;
   traits: string[];
   ddragon: string;
+  cdkey: string;
 }
 
 export interface ItemData {
   name: string;
-  icon: string;
+  nameJa: string;
+  cdkey: string;
 }
 
 export interface AugmentData {
   name: string;
-  icon: string;
+  nameJa: string;
+  trait: string;
+  tier: string;
 }
