@@ -1,164 +1,131 @@
 import { useMemo, useState } from 'react';
 import { useGameState } from './hooks/useGameState';
 import { calculateScores } from './engine/scorer';
-import ChampionSelector from './components/ChampionSelector';
-import ItemAugmentSelector from './components/ItemAugmentSelector';
-import RecommendationPanel from './components/RecommendationPanel';
-import EarlyGameHints from './components/EarlyGameHints';
+import ChampionPanel from './components/ChampionPanel';
+import ItemAugmentPanel from './components/ItemAugmentPanel';
+import RecommendPanel from './components/RecommendPanel';
+import PhaseBar from './components/PhaseBar';
 import compsData from './data/comps.json';
 import type { Comp } from './types/comp';
 
 const comps = compsData as Comp[];
 
-type Tab = 'champs' | 'items' | 'hints' | 'result';
-
-const TAB_LABELS: Record<Tab, string> = {
-  champs: '🦸 チャンプ',
-  items: '⚗️ アイテム',
-  hints: '💡 ヒント',
-  result: '🏆 結果',
-};
-
 export default function App() {
   const { state, toggleChampion, toggleItem, toggleAugment, setLevel, setStage, resetGame } = useGameState();
-  const [tab, setTab] = useState<Tab>('champs');
+  const [leftTab, setLeftTab] = useState<'champs'|'gear'>('champs');
 
   const scores = useMemo(() => calculateScores(comps, state), [state]);
-
-  const topScore = scores[0]?.totalScore ?? 0;
-  const hasGoodMatch = topScore >= 60;
+  const top = scores[0];
+  const hasHit = top && top.totalScore >= 55;
 
   return (
     <div style={{
-      minHeight: '100vh',
-      background: '#0d0d1a',
-      color: '#ffffff',
-      fontFamily: "'Segoe UI', 'Helvetica Neue', sans-serif",
-      maxWidth: '640px',
-      margin: '0 auto',
+      display: 'flex', flexDirection: 'column', minHeight: '100vh',
+      background: 'radial-gradient(ellipse at top, #0f0f2e 0%, #07070f 100%)',
+      color: '#e0e0ff',
+      fontFamily: "'Segoe UI', system-ui, sans-serif",
     }}>
-      {/* ヘッダー */}
-      <div style={{
-        background: 'linear-gradient(135deg, #1a0533, #0d1b40)',
-        padding: '16px 20px',
-        borderBottom: '1px solid #2a2a5a',
+      {/* ====== TOP BAR ====== */}
+      <header style={{
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+        padding: '0 28px', height: '56px',
+        background: 'linear-gradient(90deg,#0d0d30,#1a0533)',
+        borderBottom: '1px solid #2a1f5a',
+        flexShrink: 0,
       }}>
-        <div>
-          <div style={{ fontSize: '18px', fontWeight: 'bold', color: '#c084fc' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <span style={{ fontSize: '22px', fontWeight: 900, letterSpacing: '0.03em',
+            background: 'linear-gradient(135deg,#a78bfa,#fbbf24)', WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent' }}>
             ✦ TFT Advisor
-          </div>
-          <div style={{ fontSize: '12px', color: '#888' }}>
-            Patch 17.2b / Silver〜Platinum / Sティア
-          </div>
+          </span>
+          <span style={{ fontSize: '12px', color: '#6b6b9a', borderLeft: '1px solid #2a2a5a',
+            paddingLeft: '12px' }}>
+            Patch 17.2b · ランク戦 · Silver〜Platinum · Sティア
+          </span>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          {hasGoodMatch && (
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          {hasHit && (
             <span style={{
-              padding: '4px 10px', background: '#166534', borderRadius: '20px',
-              fontSize: '12px', color: '#86efac', fontWeight: 'bold',
+              padding: '4px 14px', borderRadius: '20px',
+              background: 'linear-gradient(90deg,#14532d,#166534)',
+              border: '1px solid #22c55e55', color: '#86efac',
+              fontSize: '13px', fontWeight: 700,
             }}>
-              🎯 狙い目あり
+              🎯 {top.comp.name} が狙い目！
             </span>
           )}
-          <button
-            onClick={resetGame}
-            style={{
-              padding: '6px 12px', borderRadius: '6px', border: '1px solid #444',
-              background: 'transparent', color: '#888', cursor: 'pointer', fontSize: '12px',
-            }}
-          >
-            リセット
+          <button onClick={resetGame} style={{
+            padding: '6px 14px', borderRadius: '6px',
+            border: '1px solid #3a2a6a', background: 'transparent',
+            color: '#7a6aaa', cursor: 'pointer', fontSize: '12px',
+            transition: 'all .15s',
+          }}>
+            🔄 新しいゲーム
           </button>
         </div>
-      </div>
+      </header>
 
-      {/* ステータスバー */}
-      <div style={{
-        padding: '8px 20px',
-        background: '#111128',
-        borderBottom: '1px solid #2a2a4a',
-        display: 'flex', gap: '16px', fontSize: '12px',
-      }}>
-        <span style={{ color: '#4a4aff' }}>
-          チャンプ {state.champions.length}体
-        </span>
-        <span style={{ color: '#f59e0b' }}>
-          アイテム {state.items.length}個
-        </span>
-        <span style={{ color: '#7c3aed' }}>
-          オーグメント {state.augments.length}/3
-        </span>
-        {scores[0] && (
-          <span style={{ marginLeft: 'auto', color: '#22c55e', fontWeight: 'bold' }}>
-            TOP: {scores[0].comp.name} ({scores[0].totalScore}点)
-          </span>
-        )}
-      </div>
+      {/* ====== PHASE BAR ====== */}
+      <PhaseBar state={state} onLevelChange={setLevel} onStageChange={setStage} />
 
-      {/* タブナビ */}
-      <div style={{
-        display: 'flex', background: '#111128',
-        borderBottom: '1px solid #2a2a4a',
-      }}>
-        {(Object.keys(TAB_LABELS) as Tab[]).map(t => (
-          <button
-            key={t}
-            onClick={() => setTab(t)}
-            style={{
-              flex: 1, padding: '12px 4px', border: 'none', cursor: 'pointer',
-              background: tab === t ? '#1a1a3e' : 'transparent',
-              color: tab === t ? '#c084fc' : '#666',
-              borderBottom: tab === t ? '2px solid #7c3aed' : '2px solid transparent',
-              fontSize: '12px', fontWeight: tab === t ? 'bold' : 'normal',
-              transition: 'all 0.15s',
-            }}
-          >
-            {TAB_LABELS[t]}
-            {t === 'result' && scores[0] && (
-              <span style={{
-                marginLeft: '4px', padding: '1px 5px',
-                background: '#4a4aff', borderRadius: '10px', fontSize: '10px', color: '#fff',
+      {/* ====== MAIN 2-COLUMN ====== */}
+      <div style={{ display: 'flex', flex: 1, overflow: 'hidden' }}>
+
+        {/* ---- LEFT PANEL ---- */}
+        <aside style={{
+          width: '420px', flexShrink: 0,
+          display: 'flex', flexDirection: 'column',
+          borderRight: '1px solid #1e1e4a',
+          background: '#09091e',
+        }}>
+          {/* タブ切り替え */}
+          <div style={{
+            display: 'flex', borderBottom: '1px solid #1e1e4a',
+            background: '#0a0a20',
+          }}>
+            {([['champs','🦸 チャンピオン'], ['gear','⚗️ アイテム / オーグメント']] as const).map(([k, label]) => (
+              <button key={k} onClick={() => setLeftTab(k)} style={{
+                flex: 1, padding: '13px 8px', border: 'none', cursor: 'pointer',
+                background: leftTab === k ? '#12124a' : 'transparent',
+                color: leftTab === k ? '#a78bfa' : '#555',
+                borderBottom: leftTab === k ? '2px solid #7c3aed' : '2px solid transparent',
+                fontSize: '13px', fontWeight: leftTab === k ? 700 : 400,
+                transition: 'all .15s',
               }}>
-                {scores[0].totalScore}
-              </span>
-            )}
-          </button>
-        ))}
-      </div>
+                {label}
+                {k === 'champs' && state.champions.length > 0 && (
+                  <span style={{
+                    marginLeft: '6px', padding: '1px 7px',
+                    background: '#4a4aff', borderRadius: '12px',
+                    fontSize: '11px', color: '#fff',
+                  }}>{state.champions.length}</span>
+                )}
+              </button>
+            ))}
+          </div>
 
-      {/* タブコンテンツ */}
-      <div style={{ minHeight: 'calc(100vh - 200px)' }}>
-        {tab === 'champs' && (
-          <ChampionSelector selected={state.champions} onToggle={toggleChampion} />
-        )}
-        {tab === 'items' && (
-          <ItemAugmentSelector
-            selectedItems={state.items}
-            selectedAugments={state.augments}
-            onToggleItem={toggleItem}
-            onToggleAugment={toggleAugment}
-          />
-        )}
-        {tab === 'hints' && (
-          <EarlyGameHints
-            state={state}
-            scores={scores}
-            onLevelChange={setLevel}
-            onStageChange={setStage}
-          />
-        )}
-        {tab === 'result' && (
-          <RecommendationPanel scores={scores} />
-        )}
-      </div>
+          <div style={{ flex: 1, overflowY: 'auto' }}>
+            {leftTab === 'champs'
+              ? <ChampionPanel selected={state.champions} onToggle={toggleChampion} />
+              : <ItemAugmentPanel
+                  selectedItems={state.items}
+                  selectedAugments={state.augments}
+                  onToggleItem={toggleItem}
+                  onToggleAugment={toggleAugment}
+                />
+            }
+          </div>
+        </aside>
 
-      {/* フッター */}
-      <div style={{
-        padding: '12px 20px', borderTop: '1px solid #2a2a4a',
-        textAlign: 'center', fontSize: '11px', color: '#444',
-      }}>
-        Data based on MetaTFT · Patch 17.2b · Silver-Platinum
+        {/* ---- RIGHT PANEL ---- */}
+        <main style={{
+          flex: 1, overflowY: 'auto',
+          padding: '20px 24px',
+          background: '#080818',
+        }}>
+          <RecommendPanel scores={scores} playerChampions={state.champions} />
+        </main>
       </div>
     </div>
   );

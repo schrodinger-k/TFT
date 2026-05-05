@@ -1,41 +1,35 @@
-*, *::before, *::after {
-  box-sizing: border-box;
-}
-
-html, body, #root {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
-
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body, #root { height: 100%; }
 body {
-  background: #0d0d1a;
-  color: #fff;
+  background: #07070f;
+  color: #e0e0ff;
   -webkit-font-smoothing: antialiased;
+  font-family: 'Segoe UI', system-ui, sans-serif;
 }
 
-button {
-  font-family: inherit;
+/* カスタムスクロールバー */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: #0a0a1e; }
+::-webkit-scrollbar-thumb { background: #2a2a6a; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #4a4aaa; }
+
+/* テキスト選択色 */
+::selection { background: #4a1a9a; color: #fff; }
+
+/* details/summary */
+details summary::-webkit-details-marker { display: none; }
+details > summary { list-style: none; }
+
+/* パルスアニメーション */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
 }
 
-input {
-  font-family: inherit;
-}
+/* フォームリセット */
+button, input { font-family: inherit; }
+input { outline: none; }
+button { outline: none; }
 
-::-webkit-scrollbar {
-  width: 4px;
-}
-::-webkit-scrollbar-track {
-  background: #1a1a2e;
-}
-::-webkit-scrollbar-thumb {
-  background: #4a4aff;
-  border-radius: 2px;
-}
-
-details summary {
-  list-style: none;
-}
-details summary::-webkit-details-marker {
-  display: none;
-}
+/* ホバーエフェクト用 */
+button:hover { opacity: 0.9; }

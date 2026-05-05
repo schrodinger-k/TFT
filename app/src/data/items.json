@@ -1,15 +1,33 @@
 {
   "components": [
-    "BF Sword", "Recurve Bow", "Needlessly Large Rod",
-    "Tear of the Goddess", "Chain Vest", "Negatron Cloak",
-    "Giant's Belt", "Spatula", "Sparring Gloves"
+    { "name": "BF Sword",               "icon": "bfsword" },
+    { "name": "Recurve Bow",            "icon": "recurvebow" },
+    { "name": "Needlessly Large Rod",   "icon": "needlesslylargerod" },
+    { "name": "Tear of the Goddess",    "icon": "tearofthegoddess" },
+    { "name": "Chain Vest",             "icon": "chainvest" },
+    { "name": "Negatron Cloak",         "icon": "negatroncloak" },
+    { "name": "Giant's Belt",           "icon": "giantsbelt" },
+    { "name": "Spatula",                "icon": "spatula" },
+    { "name": "Sparring Gloves",        "icon": "sparringgloves" }
   ],
   "completed": [
-    "Rabadon's Deathcap", "Jeweled Gauntlet", "Archangel's Staff",
-    "Guinsoo's Rageblade", "Rapid Firecannon", "Infinity Edge",
-    "Last Whisper", "Bloodthirster", "Titan's Resolve",
-    "Bramble Vest", "Blue Buff", "Spear of Shojin",
-    "Shadowflame", "Hextech Gunblade", "Warmog's Armor",
-    "Redemption", "Sunfire Cape", "Dragon's Claw"
+    { "name": "Rabadon's Deathcap",   "icon": "rabadonsdeathcap" },
+    { "name": "Jeweled Gauntlet",     "icon": "jeweledgauntlet" },
+    { "name": "Archangel's Staff",    "icon": "archangelsstaff" },
+    { "name": "Guinsoo's Rageblade",  "icon": "guinsoosrageblade" },
+    { "name": "Rapid Firecannon",     "icon": "rapidfirecannon" },
+    { "name": "Infinity Edge",        "icon": "infinityedge" },
+    { "name": "Last Whisper",         "icon": "lastwhisper" },
+    { "name": "Bloodthirster",        "icon": "bloodthirster" },
+    { "name": "Titan's Resolve",      "icon": "titansresolve" },
+    { "name": "Bramble Vest",         "icon": "bramblevest" },
+    { "name": "Blue Buff",            "icon": "bluebuff" },
+    { "name": "Spear of Shojin",      "icon": "spearofshojin" },
+    { "name": "Shadowflame",          "icon": "shadowflame" },
+    { "name": "Hextech Gunblade",     "icon": "hextechgunblade" },
+    { "name": "Warmog's Armor",       "icon": "warmogsarmor" },
+    { "name": "Redemption",           "icon": "redemption" },
+    { "name": "Sunfire Cape",         "icon": "sunfirecape" },
+    { "name": "Dragon's Claw",        "icon": "dragonsclaw" }
   ]
 }
