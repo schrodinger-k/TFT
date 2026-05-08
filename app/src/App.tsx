@@ -6,17 +6,20 @@ import ChampionPanel from './components/ChampionPanel';
 import ItemAugmentPanel from './components/ItemAugmentPanel';
 import RecommendPanel from './components/RecommendPanel';
 import PhaseBar from './components/PhaseBar';
+import PrimordianDashboard from './components/PrimordianDashboard';
 import compsData from './data/comps.json';
 import type { Comp } from './types/comp';
 
 const comps = compsData as Comp[];
 
 type Tab = 'champs' | 'gear';
+type View = 'advisor' | 'primordian';
 const TAB_LABELS: Record<Tab, string> = { champs:'🦸 チャンピオン', gear:'⚗️ アイテム / オーグメント' };
 
 export default function App() {
   const { state, toggleChampion, toggleItem, toggleAugment, setLevel, setStage, resetGame } = useGameState();
   const [leftTab, setLeftTab] = useState<Tab>('champs');
+  const [view, setView] = useState<View>('advisor');
 
   // Data Dragon最新バージョン取得
   useEffect(() => {
@@ -54,7 +57,24 @@ export default function App() {
           </span>
         </div>
         <div style={{ display:'flex', alignItems:'center', gap:'12px' }}>
-          {hasHit && (
+          {/* ビュー切り替え */}
+          <div style={{ display:'flex', gap:'4px', padding:'3px', borderRadius:'8px', background:'#0a0a20', border:'1px solid #1e1e4a' }}>
+            <button onClick={() => setView('advisor')} style={{
+              padding:'5px 12px', borderRadius:'5px', border:'none', cursor:'pointer',
+              background: view==='advisor' ? '#4a4aff' : 'transparent',
+              color: view==='advisor' ? '#fff' : '#7a7aaa',
+              fontSize:'12px', fontWeight: view==='advisor' ? 700 : 500,
+              transition:'all .15s',
+            }}>📊 アドバイザー</button>
+            <button onClick={() => setView('primordian')} style={{
+              padding:'5px 12px', borderRadius:'5px', border:'none', cursor:'pointer',
+              background: view==='primordian' ? 'linear-gradient(135deg,#1a6b3a,#34d399aa)' : 'transparent',
+              color: view==='primordian' ? '#fff' : '#7a7aaa',
+              fontSize:'12px', fontWeight: view==='primordian' ? 700 : 500,
+              transition:'all .15s',
+            }}>🌿 Primordian OTP</button>
+          </div>
+          {view === 'advisor' && hasHit && (
             <span style={{
               padding:'4px 14px', borderRadius:'20px',
               background:'linear-gradient(90deg,#14532d,#166534)',
@@ -62,34 +82,45 @@ export default function App() {
               fontSize:'13px', fontWeight:700,
             }}>🎯 {top.comp.name} が狙い目！</span>
           )}
-          <button onClick={resetGame} style={{
-            padding:'6px 14px', borderRadius:'6px',
-            border:'1px solid #3a2a6a', background:'transparent',
-            color:'#7a6aaa', cursor:'pointer', fontSize:'12px',
-          }}>🔄 新しいゲーム</button>
+          {view === 'advisor' && (
+            <button onClick={resetGame} style={{
+              padding:'6px 14px', borderRadius:'6px',
+              border:'1px solid #3a2a6a', background:'transparent',
+              color:'#7a6aaa', cursor:'pointer', fontSize:'12px',
+            }}>🔄 新しいゲーム</button>
+          )}
         </div>
       </header>
 
-      {/* ステージ・レベルバー */}
-      <PhaseBar state={state} onLevelChange={setLevel} onStageChange={setStage} />
+      {/* ステージ・レベルバー (アドバイザーモードのみ) */}
+      {view === 'advisor' && (
+        <>
+          <PhaseBar state={state} onLevelChange={setLevel} onStageChange={setStage} />
 
-      {/* ステータスバー */}
-      <div style={{
-        display:'flex', gap:'16px', padding:'6px 28px',
-        background:'#0a0a1e', borderBottom:'1px solid #1a1a3a',
-        fontSize:'12px', flexShrink:0,
-      }}>
-        <span style={{ color:'#6366f1' }}>チャンプ {state.champions.length}体</span>
-        <span style={{ color:'#f59e0b' }}>アイテム {state.items.length}個</span>
-        <span style={{ color:'#a855f7' }}>オーグメント {state.augments.length}/3</span>
-        {top && top.totalScore > 0 && (
-          <span style={{ marginLeft:'auto', color:'#22c55e', fontWeight:700 }}>
-            TOP: {top.comp.name}（{top.totalScore}点 / {top.recommendation}）
-          </span>
-        )}
-      </div>
+          {/* ステータスバー */}
+          <div style={{
+            display:'flex', gap:'16px', padding:'6px 28px',
+            background:'#0a0a1e', borderBottom:'1px solid #1a1a3a',
+            fontSize:'12px', flexShrink:0,
+          }}>
+            <span style={{ color:'#6366f1' }}>チャンプ {state.champions.length}体</span>
+            <span style={{ color:'#f59e0b' }}>アイテム {state.items.length}個</span>
+            <span style={{ color:'#a855f7' }}>オーグメント {state.augments.length}/3</span>
+            {top && top.totalScore > 0 && (
+              <span style={{ marginLeft:'auto', color:'#22c55e', fontWeight:700 }}>
+                TOP: {top.comp.name}（{top.totalScore}点 / {top.recommendation}）
+              </span>
+            )}
+          </div>
+        </>
+      )}
 
-      {/* メイン2カラム */}
+      {/* メイン領域 */}
+      {view === 'primordian' ? (
+        <main style={{ flex:1, overflowY:'auto', background:'#080818' }}>
+          <PrimordianDashboard />
+        </main>
+      ) : (
       <div style={{ display:'flex', flex:1, overflow:'hidden' }}>
         {/* 左パネル */}
         <aside style={{
@@ -133,6 +164,7 @@ export default function App() {
           <RecommendPanel scores={scores} playerChampions={state.champions}/>
         </main>
       </div>
+      )}
     </div>
   );
 }
